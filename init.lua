@@ -5,8 +5,6 @@ require("WeekendToad.core.colorscheme")
 require("WeekendToad.plugins-setup")
 require("WeekendToad.plugins/harpoon")
 require("WeekendToad.plugins/nvim-telescope")
--- require("telescope.builtin").find_files{ path_display = { "truncate" } }
-
 
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
