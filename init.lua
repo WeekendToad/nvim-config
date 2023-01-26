@@ -14,7 +14,7 @@ require("mason").setup()
 require("lspconfig").tsserver.setup{}
 require('gitsigns').setup{}
 
-
+require'luasnip'.filetype_extend("tsx", {"typescript"})
 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'

@@ -59,7 +59,7 @@ function _G.set_terminal_keymaps()
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+--vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 local status, packer = pcall(require, "packer")
 if not status then
@@ -70,81 +70,81 @@ return packer.startup(function(use)
 
   use("bluz71/vim-nightfly-guicolors")
 
-use {
+  use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-}
+  }
 
   use {
     'lewis6991/gitsigns.nvim',
   }
 
 
-use{ 'hrsh7th/cmp-buffer'}
-use{ 'hrsh7th/cmp-path'}
-use{ 'hrsh7th/cmp-cmdline'}
+  use "rafamadriz/friendly-snippets"
+  use{ 'hrsh7th/cmp-buffer'}
+  use{ 'hrsh7th/cmp-path'}
+  use{ 'hrsh7th/cmp-cmdline'}
 
   use { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  }
+  'hrsh7th/nvim-cmp',
+  requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+}
+use {'github/copilot.vim'}
 
-  use({
-    "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
-  })
-
-  use {
-    "akinsho/toggleterm.nvim", tag = '*', 
-  }
-  use { 'j-hui/fidget.nvim' }
-  -- use {
-  --   "hrsh7th/nvim-cmp",
-  --   requires = {
-  --     "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
-  --     'quangnguyen30192/cmp-nvim-ultisnips', 'hrsh7th/cmp-nvim-lua',
-  --     'octaltree/cmp-look', 'hrsh7th/cmp-path', 'hrsh7th/cmp-calc',
-  --     'f3fora/cmp-spell', 'hrsh7th/cmp-emoji'
-  --   }
-  -- }
-
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
-
-  use { "tpope/vim-fugitive" }
-  use {"tpope/vim-commentary"}
-  use { "ellisonleao/gruvbox.nvim" }
-
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-
-  use { 'nvim-lua/plenary.nvim' }
-  use { 'ThePrimeagen/harpoon' }
-
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  }
-
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-
-  if packer_bootstrap then
-    require("packer").sync()
+use({
+  "kylechui/nvim-surround",
+  tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+  config = function()
+    require("nvim-surround").setup({
+      -- Configuration here, or leave empty to use defaults
+    })
   end
+})
+
+use {
+  "akinsho/toggleterm.nvim", tag = '*', 
+}
+use { 'j-hui/fidget.nvim' }
+-- use {
+--   "hrsh7th/nvim-cmp",
+--   requires = {
+--     "hrsh7th/cmp-buffer", "hrsh7th/cmp-nvim-lsp",
+--     'quangnguyen30192/cmp-nvim-ultisnips', 'hrsh7th/cmp-nvim-lua',
+--     'octaltree/cmp-look', 'hrsh7th/cmp-path', 'hrsh7th/cmp-calc',
+--     'f3fora/cmp-spell', 'hrsh7th/cmp-emoji'
+--   }
+-- }
+
+use {
+  'nvim-tree/nvim-tree.lua',
+  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
+
+use "kyazdani42/nvim-web-devicons"
+use { "tpope/vim-fugitive" }
+use {"tpope/vim-commentary"}
+use { "ellisonleao/gruvbox.nvim" }
+
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
+
+use { 'nvim-lua/plenary.nvim' }
+use { 'ThePrimeagen/harpoon' }
+
+use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+}
+
+use {
+  'nvim-treesitter/nvim-treesitter',
+  run = ':TSUpdate'
+}
+
+if packer_bootstrap then
+  require("packer").sync()
+end
 end)
 
